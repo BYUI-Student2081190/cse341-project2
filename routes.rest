@@ -111,3 +111,102 @@ Content-Type: application/json
 
 ### Delete the new account - make sure to update the id in the url
 DELETE http://localhost:3030/accounts/673e88053faf92aa418b7b62
+
+
+
+
+
+### ORDERS:
+### View All Orders
+GET http://localhost:3030/orders
+
+### View Order by ID
+GET http://localhost:3030/orders/673e9d727e0ff142abed5a2d
+
+### Create new Order
+POST http://localhost:3030/orders
+Content-Type: application/json
+
+{
+    "size":"small",
+    "sauce":"Garlic Sauce",
+    "toppings":"Pepperoni, Mushrooms, Sausage",
+    "drink":"Dr.Kelp",
+    "deliveryAddress":"9999 Testway S.",
+    "deliveryTime":"5:00 PM",
+    "price":9.99,
+    "orderAccountId":"673d0ca482a76edb238cf335"
+}
+
+### Create another Order - Tony Stark Order
+POST http://localhost:3030/orders
+Content-Type: application/json
+
+{
+    "size":"large",
+    "sauce":"Red Sauce",
+    "toppings":"Pepperoni",
+    "drink":"Sprite",
+    "deliveryAddress":"9991 StarkWay S.",
+    "deliveryTime":"7:00 PM",
+    "price":15.99,
+    "orderAccountId":"673e6eaaf4b63d2b9ef1f8b7"
+}
+
+### Create another Order - Test default values
+POST http://localhost:3030/orders
+Content-Type: application/json
+
+{
+    "size":"large",
+    "deliveryTime":"8:00 PM",
+    "price":15.99,
+    "orderAccountId":"673e6eaaf4b63d2b9ef1f8b7"
+}
+
+### Update Order
+PUT http://localhost:3030/orders/673e9d727e0ff142abed5a2d
+Content-Type: application/json
+
+{
+    "size":"large",
+    "sauce":"Garlic Sauce",
+    "toppings":"Pepperoni, Mushrooms",
+    "drink":"Diet Coke",
+    "deliveryTime":"5:30 PM",
+    "price":15.99,
+    "orderAccountId":"673d0ca482a76edb238cf335"
+}
+
+### Revert Order
+PUT http://localhost:3030/orders/673e9d727e0ff142abed5a2d
+Content-Type: application/json
+
+{
+    "size":"small",
+    "sauce":"Garlic Sauce",
+    "toppings":"Pepperoni, Mushrooms, Sausage",
+    "drink":"Dr.Kelp",
+    "deliveryAddress":"9999 Testway S.",
+    "deliveryTime":"5:00 PM",
+    "price":9.99,
+    "orderAccountId":"673d0ca482a76edb238cf335"
+}
+
+### Create a test one to delete
+POST http://localhost:3030/orders
+Content-Type: application/json
+
+{
+    "size":"delete",
+    "sauce":"Delete Sauce",
+    "toppings":"Delete",
+    "drink":"Delete Cola",
+    "deliveryAddress":"12 Delete E.",
+    "deliveryTime":"12:00 AM",
+    "price":5.99,
+    "orderAccountId":"deleteME"
+}
+
+### Delete the test order - make sure to update the id in the url
+DELETE http://localhost:3030/orders/673ea0ab4a34eb14239fa1d7
