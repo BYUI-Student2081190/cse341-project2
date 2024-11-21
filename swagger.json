@@ -6,7 +6,7 @@
     "version": "1.0.0",
     "description": ""
   },
-  "host": "localhost:3030",
+  "host": "cse341-project2-jid2.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
