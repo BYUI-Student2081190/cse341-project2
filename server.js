@@ -1,6 +1,5 @@
 /** Required Varibles **/
 const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const connectToDB = require('./database/connect');
 // In dev set to port 3030 on default

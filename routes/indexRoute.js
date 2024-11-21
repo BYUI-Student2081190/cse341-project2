@@ -9,6 +9,7 @@ router.get("/", (req, res) => {
 });
 router.use("/accounts", require("./accoutsRoute"));
 router.use("/orders", require("./ordersRoute"));
+router.use("/api-docs", require("./swaggerRoute"));
 
 
 module.exports = router;
