@@ -14,7 +14,7 @@ const orderSchema = new Schema({
         default: "None"
     },
     toppings: {
-        type: [String],
+        type: String,
         default: "None"
     },
     drink: {
@@ -37,6 +37,9 @@ const orderSchema = new Schema({
         type: String,
         required: true
     }
-});
+},
+// Turned this off in the schema because it was causing errors,
+// and it is not needed for this assignment 
+{versionKey: false});
 
 module.exports = mongoose.model("Order", orderSchema);

@@ -1,0 +1,113 @@
+### Local Testing
+### Accounts:
+
+### Select All
+GET http://localhost:3030/accounts
+
+### Select By ID - Successful
+GET http://localhost:3030/accounts/673d0ca482a76edb238cf335
+
+### Add new Account
+POST http://localhost:3030/accounts
+Content-Type: application/json
+
+{
+    "firstname":"Tony",
+    "lastname":"Stark",
+    "password":"s+@RkR0cK2"
+}
+
+### Add another new Account
+POST http://localhost:3030/accounts
+Content-Type: application/json
+
+{
+    "firstname":"Bruce",
+    "lastname":"Lee",
+    "password":"w@Lk+Th3wayofTh3Dr@g0N"
+}
+
+### Add new Account - ERROR TEST: Test to see if the password being wrong will cause it to not be added
+POST http://localhost:3030/accounts
+Content-Type: application/json
+
+{
+    "firstname":"Error",
+    "lastname":"Big Error",
+    "password":"error"
+}
+
+### Update Account
+PUT http://localhost:3030/accounts/673e6eaaf4b63d2b9ef1f8b7
+Content-Type: application/json
+
+{
+    "firstname":"Iron",
+    "lastname":"Man",
+    "password":"s+@RkR0cK2"
+}
+
+### Revert Account
+PUT http://localhost:3030/accounts/673e6eaaf4b63d2b9ef1f8b7
+Content-Type: application/json
+
+{
+    "firstname":"Tony",
+    "lastname":"Stark",
+    "password":"s+@RkR0cK2"
+}
+
+### Update another Account
+PUT http://localhost:3030/accounts/673e7d55ed8bf5d5ec97b430
+Content-Type: application/json
+
+{
+    "firstname":"The",
+    "lastname":"Dragon",
+    "password":"b3C0m3L1K3tH3Dr@g0n"
+}
+
+### Revert Account
+PUT http://localhost:3030/accounts/673e7d55ed8bf5d5ec97b430
+Content-Type: application/json
+
+{
+    "firstname":"Bruce",
+    "lastname":"Lee",
+    "password":"w@Lk+Th3wayofTh3Dr@g0N"
+}
+
+### Update another Account
+PUT http://localhost:3030/accounts/673d0ca482a76edb238cf335
+Content-Type: application/json
+
+{
+    "firstname":"MyLittleTest",
+    "lastname":"TestMe",
+    "password":"t3s+Y0urprojects"
+}
+
+### Revert Account
+PUT http://localhost:3030/accounts/673d0ca482a76edb238cf335
+Content-Type: application/json
+
+{
+    "firstname":"TestTony",
+    "lastname":"Test",
+    "password":"t3s+Y0urprojects"
+}
+
+### Delete test
+
+### Create new account to delete
+POST http://localhost:3030/accounts
+Content-Type: application/json
+
+{
+    "firstname":"DeleteDave",
+    "lastname":"DeleteMe",
+    "password":"d3L3+3me"
+}
+
+### Delete the new account - make sure to update the id in the url
+DELETE http://localhost:3030/accounts/673e88053faf92aa418b7b62

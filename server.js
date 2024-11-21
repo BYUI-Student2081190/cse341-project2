@@ -8,8 +8,9 @@ const PORT = process.env.PORT || 3030;
 const app = express();
 
 /** Middleware **/
-
-// Connect to the db
+// Apply Json res
+app.use(express.json());
+// Connect to the db - using mongoose
 connectToDB();
 
 /** Routes **/
