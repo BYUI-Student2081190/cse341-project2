@@ -68,6 +68,16 @@ const updateAccount = async (req, res) => {
             console.log("_id sent in by user was not valid for update.")
             res.status(400).send({message: `Cannot update account because _id:${_id} does not exist in table. Please enter an exsiting _id.`});
         } else {
+            // Check to see if the update data is empty, if it is update the data to hold the old data
+            if (!replaceData.firstname) {
+                replaceData.firstname = check[0].firstname;
+            };
+            if (!replaceData.lastname) {
+                replaceData.lastname = check[0].lastname;
+            };
+            if (!replaceData.password) {
+                replaceData.password = check[0].password;
+            };
             // Do the code to update the account - make sure to add which id needs to be replaced
             const result = await Account.replaceOne( { "_id":_id }, replaceData);
             res.status(204).send(result);

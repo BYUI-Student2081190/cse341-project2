@@ -28,6 +28,7 @@ Content-Type: application/json
 }
 
 ### Add new Account - ERROR TEST: Test to see if the password being wrong will cause it to not be added
+### Completely wrong
 POST http://localhost:3030/accounts
 Content-Type: application/json
 
@@ -35,6 +36,49 @@ Content-Type: application/json
     "firstname":"Error",
     "lastname":"Big Error",
     "password":"error"
+}
+
+### Add new Account - ERROR TEST: Test to see if the password being wrong will cause it to not be added
+### Space addded
+POST http://localhost:3030/accounts
+Content-Type: application/json
+
+{
+    "firstname":"Error",
+    "lastname":"Big Error",
+    "password":"er ror"
+}
+
+### Add new Account - ERROR TEST: Test to see if the password being wrong will cause it to not be added
+### Not long enough
+POST http://localhost:3030/accounts
+Content-Type: application/json
+
+{
+    "firstname":"Error",
+    "lastname":"Big Error",
+    "password":"1@"
+}
+
+### Add new Account - ERROR TEST: Test to see if the password being wrong will cause it to not be added
+### Long enough, has symbol, has number, but does have a space
+POST http://localhost:3030/accounts
+Content-Type: application/json
+
+{
+    "firstname":"Error",
+    "lastname":"Big Error",
+    "password":"@erR0r2 are cool"
+}
+
+### Add new Account - ERROR TEST: Test to see if the password being wrong will cause it to not be added
+### No password
+POST http://localhost:3030/accounts
+Content-Type: application/json
+
+{
+    "firstname":"Error",
+    "lastname":"Big Error"
 }
 
 ### Update Account
@@ -87,6 +131,58 @@ Content-Type: application/json
     "password":"t3s+Y0urprojects"
 }
 
+### Update Error Test
+### Update an account with an invalid password
+PUT http://localhost:3030/accounts/673d0ca482a76edb238cf335
+Content-Type: application/json
+
+{
+    "firstname":"MyLittleTest",
+    "lastname":"TestMe",
+    "password":"t3s+Y0"
+}
+
+### Update Error Test
+### Update an account with no firstname
+PUT http://localhost:3030/accounts/673d0ca482a76edb238cf335
+Content-Type: application/json
+
+{
+    "lastname":"TestMe",
+    "password":"t3s+Y0urprojects"
+}
+
+### Update Error Test
+### Update an account with no lastname
+PUT http://localhost:3030/accounts/673d0ca482a76edb238cf335
+Content-Type: application/json
+
+{
+    "firstname":"MyLittleTest",
+    "password":"t3s+Y0urprojects"
+}
+
+### Update Error Test
+### Update an account with no password
+PUT http://localhost:3030/accounts/673d0ca482a76edb238cf335
+Content-Type: application/json
+
+{
+    "firstname":"MyLittleTest",
+    "lastname":"TestMe"
+}
+
+### Update Error Test
+### Update an account to have a matching password as another account
+PUT http://localhost:3030/accounts/673d0ca482a76edb238cf335
+Content-Type: application/json
+
+{
+    "firstname":"TestTony",
+    "lastname":"Test",
+    "password":"w@Lk+Th3wayofTh3Dr@g0N"
+}
+
 ### Revert Account
 PUT http://localhost:3030/accounts/673d0ca482a76edb238cf335
 Content-Type: application/json
@@ -94,7 +190,7 @@ Content-Type: application/json
 {
     "firstname":"TestTony",
     "lastname":"Test",
-    "password":"t3s+Y0urprojects"
+    "password":"t3s+Y0urpr@jects"
 }
 
 ### Delete test
@@ -110,7 +206,7 @@ Content-Type: application/json
 }
 
 ### Delete the new account - make sure to update the id in the url
-DELETE http://localhost:3030/accounts/673e88053faf92aa418b7b62
+DELETE http://localhost:3030/accounts/6746adfe4bbec5e9a7961d78
 
 
 
