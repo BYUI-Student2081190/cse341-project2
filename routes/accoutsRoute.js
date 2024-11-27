@@ -10,14 +10,14 @@ router.get("/", accController.selectAll);
 router.get("/:id", accController.selectByID);
 router.post(
     "/", 
-    passValidate.rules(), 
-    passValidate.checkData, 
+    passValidate.createRules(), 
+    passValidate.checkCreateData, 
     accController.createAccount
 );
 router.put(
     "/:id",
-    passValidate.rules(),
-    passValidate.checkData, 
+    passValidate.updateRules(),
+    passValidate.checkUpdateData, 
     accController.updateAccount
 );
 router.delete("/:id", accController.deleteAccount);
