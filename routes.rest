@@ -12,6 +12,16 @@ POST http://localhost:3030/accounts
 Content-Type: application/json
 
 {
+    "firstname":"TestTony",
+    "lastname":"Test",
+    "password":"t3s+Y0urpr@jects"
+}
+
+### Add another new Account
+POST http://localhost:3030/accounts
+Content-Type: application/json
+
+{
     "firstname":"Tony",
     "lastname":"Stark",
     "password":"s+@RkR0cK2"
@@ -82,7 +92,7 @@ Content-Type: application/json
 }
 
 ### Update Account
-PUT http://localhost:3030/accounts/673e6eaaf4b63d2b9ef1f8b7
+PUT http://localhost:3030/accounts/6746ce025290ced336c65b7e
 Content-Type: application/json
 
 {
@@ -92,7 +102,7 @@ Content-Type: application/json
 }
 
 ### Revert Account
-PUT http://localhost:3030/accounts/673e6eaaf4b63d2b9ef1f8b7
+PUT http://localhost:3030/accounts/6746ce025290ced336c65b7e
 Content-Type: application/json
 
 {
@@ -102,7 +112,7 @@ Content-Type: application/json
 }
 
 ### Update another Account
-PUT http://localhost:3030/accounts/673e7d55ed8bf5d5ec97b430
+PUT http://localhost:3030/accounts/6746ce0a5290ced336c65b80
 Content-Type: application/json
 
 {
@@ -112,7 +122,7 @@ Content-Type: application/json
 }
 
 ### Revert Account
-PUT http://localhost:3030/accounts/673e7d55ed8bf5d5ec97b430
+PUT http://localhost:3030/accounts/6746ce0a5290ced336c65b80
 Content-Type: application/json
 
 {
@@ -122,7 +132,7 @@ Content-Type: application/json
 }
 
 ### Update another Account
-PUT http://localhost:3030/accounts/673d0ca482a76edb238cf335
+PUT http://localhost:3030/accounts/6746cdeb5290ced336c65b7b
 Content-Type: application/json
 
 {
@@ -133,7 +143,7 @@ Content-Type: application/json
 
 ### Update Error Test
 ### Update an account with an invalid password
-PUT http://localhost:3030/accounts/673d0ca482a76edb238cf335
+PUT http://localhost:3030/accounts/6746cdeb5290ced336c65b7b
 Content-Type: application/json
 
 {
@@ -144,7 +154,7 @@ Content-Type: application/json
 
 ### Update Error Test
 ### Update an account with no firstname
-PUT http://localhost:3030/accounts/673d0ca482a76edb238cf335
+PUT http://localhost:3030/accounts/6746cdeb5290ced336c65b7b
 Content-Type: application/json
 
 {
@@ -154,7 +164,7 @@ Content-Type: application/json
 
 ### Update Error Test
 ### Update an account with no lastname
-PUT http://localhost:3030/accounts/673d0ca482a76edb238cf335
+PUT http://localhost:3030/accounts/6746cdeb5290ced336c65b7b
 Content-Type: application/json
 
 {
@@ -164,7 +174,7 @@ Content-Type: application/json
 
 ### Update Error Test
 ### Update an account with no password
-PUT http://localhost:3030/accounts/673d0ca482a76edb238cf335
+PUT http://localhost:3030/accounts/6746cdeb5290ced336c65b7b
 Content-Type: application/json
 
 {
@@ -174,7 +184,7 @@ Content-Type: application/json
 
 ### Update Error Test
 ### Update an account to have a matching password as another account
-PUT http://localhost:3030/accounts/673d0ca482a76edb238cf335
+PUT http://localhost:3030/accounts/6746cdeb5290ced336c65b7b
 Content-Type: application/json
 
 {
@@ -184,7 +194,7 @@ Content-Type: application/json
 }
 
 ### Revert Account
-PUT http://localhost:3030/accounts/673d0ca482a76edb238cf335
+PUT http://localhost:3030/accounts/6746cdeb5290ced336c65b7b
 Content-Type: application/json
 
 {
@@ -206,7 +216,7 @@ Content-Type: application/json
 }
 
 ### Delete the new account - make sure to update the id in the url
-DELETE http://localhost:3030/accounts/6746adfe4bbec5e9a7961d78
+DELETE http://localhost:3030/accounts/6746da6b07a2f5c5469efe05
 
 
 
