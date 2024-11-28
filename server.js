@@ -51,7 +51,7 @@ passport.deserializeUser((user, done) => {
 });
 
 /** Added Route Handlers **/
-app.get('/', (req, res) => {res.send(req.session.user !== undefined ? `Welcome to the Pizza Api\nLogged in as ${req.session.user}` : "Welcome to the Pizza Api\nLogged Out")});
+app.get('/', (req, res) => {res.json(req.session.user !== undefined ? {welcome: 'Welcome to the Pizza Api', loggedin: `Logged in as ${req.session.user}`} : {welcome: "Welcome to the Pizza Api", loggedin: "Logged Out"})});
 
 app.get('/github/callback', passport.authenticate('github', {
     failureRedirect: '/loginError', session: false}),

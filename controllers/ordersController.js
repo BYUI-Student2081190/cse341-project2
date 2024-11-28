@@ -78,6 +78,23 @@ const updateOrder = async (req, res) => {
             res.status(400).send({message: `Cannot update because id:${_id} does not exsist currently in the collection. Please use a valid _id.`});
         }
         else {
+            // Auto replace the old inputs if they come in null, or undefined
+            if (!data.size) {
+                data.size = check[0].size;
+            };
+
+            if (!data.deliveryTime) {
+                data.deliveryTime = check[0].deliveryTime;
+            };
+
+            if (!data.price) {
+                data.price = check[0].price;
+            };
+
+            if (!data.orderAccountId) {
+                data.orderAccountId = check[0].orderAccountId;
+            };
+
             // Update the order
             const result = await Order.replaceOne({"_id":_id}, data);
             res.status(204).send(result);
