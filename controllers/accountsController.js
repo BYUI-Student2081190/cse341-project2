@@ -1,7 +1,6 @@
 /** Required Varibles **/
-const express = require('express');
-const mongoose = require('mongoose');
 const Account = require('../models/Account');
+const passHash = require('../utilities/passwordCrypt');
 
 /** Middleware to handle CRUD operations **/
 // Select all Accounts
@@ -40,9 +39,11 @@ const selectByID = async (req, res) => {
 // Create a new Account
 const createAccount = async (req, res) => {
     try {
-        // NOTE TO SELF: Add a way above to encrypt a password so you are not saving a normal password
+        // Hash the passed in password
+        const password = req.body.password;
+        const hashedPassword = await passHash.hashPassword(password);
         // Try to create a new account in the db
-        const insertData = ({firstname: req.body.firstname, lastname: req.body.lastname, password: req.body.password});
+        const insertData = ({firstname: req.body.firstname, lastname: req.body.lastname, email: req.body.email, password: hashedPassword});
         const response = await Account.insertMany(insertData);
         // If no errors occured then add it
         res.status(201).send(response);
@@ -59,7 +60,7 @@ const updateAccount = async (req, res) => {
     try {
         // Try to update the data based on the id sent in
         const _id = req.params.id;
-        const replaceData = ({firstname: req.body.firstname, lastname: req.body.lastname, password: req.body.password});
+        const replaceData = ({firstname: req.body.firstname, lastname: req.body.lastname, email: req.body.email, password: req.body.password});
         // Check to see if the id even exsists in the db
         const check = await Account.find({"_id": _id});
 
@@ -70,16 +71,32 @@ const updateAccount = async (req, res) => {
         } else {
             // Check to see if the update data is empty, if it is update the data to hold the old data
             if (!replaceData.firstname) {
+                // Just keep the old data the same
                 replaceData.firstname = check[0].firstname;
             };
+
             if (!replaceData.lastname) {
+                // Just keep the old data the same
                 replaceData.lastname = check[0].lastname;
             };
-            if (!replaceData.password) {
-                replaceData.password = check[0].password;
+
+            if (!replaceData.email) {
+                // Just keep the old data the same
+                replaceData.email = check[0].email;
             };
+
+            if (!replaceData.password) {
+                // Just keep the old data the same
+                replaceData.password = check[0].password;
+            } else {
+                // Hash the new password
+                replaceData.password = await passHash.hashPassword(replaceData.password);
+            };
+
             // Do the code to update the account - make sure to add which id needs to be replaced
-            const result = await Account.replaceOne( { "_id":_id }, replaceData);
+            // Note: Added the runValidators to the end to make sure the schema runs on update. This prevents bugs from
+            // happening in the db, this also defaults to false if not specified.
+            const result = await Account.replaceOne( { "_id":_id }, replaceData, {runValidators: true, context: replaceData});
             res.status(204).send(result);
         };
     } catch (error) {

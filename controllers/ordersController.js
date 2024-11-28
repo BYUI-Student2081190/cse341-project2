@@ -1,6 +1,4 @@
 /** Required Varibles **/
-const express = require('express');
-const mongoose = require('mongoose');
 const Order = require('../models/Order');
 
 /** Middleware to handle all the CRUD operations **/

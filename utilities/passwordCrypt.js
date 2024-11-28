@@ -8,7 +8,8 @@ const passHash = {};
 passHash.hashPassword = async (password) => {
     // This number will detemine how many rounds the hash will do
     const saltRounds = 10;
-    const hash = await bcrypt.hash(password, saltRounds);
+    const salt = await bcrypt.genSalt(saltRounds);
+    const hash = await bcrypt.hash(password, salt);
     // Return our new hashed password
     return hash;
 };

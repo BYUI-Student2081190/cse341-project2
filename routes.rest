@@ -14,6 +14,7 @@ Content-Type: application/json
 {
     "firstname":"TestTony",
     "lastname":"Test",
+    "email":"testTony@fakeemail.com",
     "password":"t3s+Y0urpr@jects"
 }
 
@@ -24,6 +25,7 @@ Content-Type: application/json
 {
     "firstname":"Tony",
     "lastname":"Stark",
+    "email":"tonyStark@fakeemail.com",
     "password":"s+@RkR0cK2"
 }
 
@@ -34,6 +36,7 @@ Content-Type: application/json
 {
     "firstname":"Bruce",
     "lastname":"Lee",
+    "email":"bruceLee@fakeemail.com",
     "password":"w@Lk+Th3wayofTh3Dr@g0N"
 }
 
@@ -45,6 +48,7 @@ Content-Type: application/json
 {
     "firstname":"Error",
     "lastname":"Big Error",
+    "email":"error@fakeemail.com",
     "password":"error"
 }
 
@@ -56,6 +60,7 @@ Content-Type: application/json
 {
     "firstname":"Error",
     "lastname":"Big Error",
+    "email":"error@fakeemail.com",
     "password":"er ror"
 }
 
@@ -67,6 +72,7 @@ Content-Type: application/json
 {
     "firstname":"Error",
     "lastname":"Big Error",
+    "email":"error@fakeemail.com",
     "password":"1@"
 }
 
@@ -78,6 +84,7 @@ Content-Type: application/json
 {
     "firstname":"Error",
     "lastname":"Big Error",
+    "email":"error@fakeemail.com",
     "password":"@erR0r2 are cool"
 }
 
@@ -88,118 +95,177 @@ Content-Type: application/json
 
 {
     "firstname":"Error",
-    "lastname":"Big Error"
+    "lastname":"Big Error",
+    "email":"errorsRock@fakeemail.com"
+}
+
+### Add new Account - ERROR TEST: Test to see if the account will not be added if it has an invalid email
+### Invalid email
+POST http://localhost:3030/accounts
+Content-Type: application/json
+
+{
+    "firstname":"Error",
+    "lastname":"Big Error",
+    "email":"error",
+    "password":"eRr0r2@r3mYF@V"
+}
+
+### Add new Account - ERROR TEST: Test to see if the account will not be added if it has a matching email
+### Matching email
+POST http://localhost:3030/accounts
+Content-Type: application/json
+
+{
+    "firstname":"Error",
+    "lastname":"Big Error",
+    "email":"bruceLee@fakeemail.com",
+    "password":"eRr0r2@r3mYF@V"
 }
 
 ### Update Account
-PUT http://localhost:3030/accounts/6746ce025290ced336c65b7e
+PUT http://localhost:3030/accounts/6747b77bbda02dac1c185ec2
 Content-Type: application/json
 
 {
     "firstname":"Iron",
     "lastname":"Man",
+    "email":"ironMan@fakeemail.com",
     "password":"s+@RkR0cK2"
 }
 
 ### Revert Account
-PUT http://localhost:3030/accounts/6746ce025290ced336c65b7e
+PUT http://localhost:3030/accounts/6747b77bbda02dac1c185ec2
 Content-Type: application/json
 
 {
     "firstname":"Tony",
     "lastname":"Stark",
+    "email":"tonyStark@fakeemail.com",
     "password":"s+@RkR0cK2"
 }
 
 ### Update another Account
-PUT http://localhost:3030/accounts/6746ce0a5290ced336c65b80
+PUT http://localhost:3030/accounts/6747b788bda02dac1c185ec4
 Content-Type: application/json
 
 {
     "firstname":"The",
     "lastname":"Dragon",
+    "email":"likeADragon@fakeemail.com",
     "password":"b3C0m3L1K3tH3Dr@g0n"
 }
 
 ### Revert Account
-PUT http://localhost:3030/accounts/6746ce0a5290ced336c65b80
+PUT http://localhost:3030/accounts/6747b788bda02dac1c185ec4
 Content-Type: application/json
 
 {
     "firstname":"Bruce",
     "lastname":"Lee",
+    "email":"bruceLee@fakeemail.com",
     "password":"w@Lk+Th3wayofTh3Dr@g0N"
 }
 
 ### Update another Account
-PUT http://localhost:3030/accounts/6746cdeb5290ced336c65b7b
+PUT http://localhost:3030/accounts/6747b763bda02dac1c185ec0
 Content-Type: application/json
 
 {
     "firstname":"MyLittleTest",
     "lastname":"TestMe",
+    "email":"myLittleTest@fakeemail.com",
+    "password":"t3s+Y0urprojects"
+}
+
+### Update Error Test
+### Try to update an account without a valid id, this will send a 500
+PUT http://localhost:3030/accounts/hi
+Content-Type: application/json
+
+{
+    "firstname":"MyLittleTest",
+    "lastname":"TestMe",
+    "email":"testTony@fakeemail.com",
     "password":"t3s+Y0urprojects"
 }
 
 ### Update Error Test
 ### Update an account with an invalid password
-PUT http://localhost:3030/accounts/6746cdeb5290ced336c65b7b
+PUT http://localhost:3030/accounts/6747b763bda02dac1c185ec0
 Content-Type: application/json
 
 {
     "firstname":"MyLittleTest",
     "lastname":"TestMe",
+    "email":"testTony@fakeemail.com",
     "password":"t3s+Y0"
 }
 
 ### Update Error Test
 ### Update an account with no firstname
-PUT http://localhost:3030/accounts/6746cdeb5290ced336c65b7b
+PUT http://localhost:3030/accounts/6747b763bda02dac1c185ec0
 Content-Type: application/json
 
 {
     "lastname":"TestMe",
+    "email":"testTony@fakeemail.com",
     "password":"t3s+Y0urprojects"
 }
 
 ### Update Error Test
 ### Update an account with no lastname
-PUT http://localhost:3030/accounts/6746cdeb5290ced336c65b7b
+PUT http://localhost:3030/accounts/6747b763bda02dac1c185ec0
 Content-Type: application/json
 
 {
     "firstname":"MyLittleTest",
+    "email":"testTony@fakeemail.com",
+    "password":"t3s+Y0urprojects"
+}
+
+### Update Error Test
+### Update an account with no email
+PUT http://localhost:3030/accounts/6747b763bda02dac1c185ec0
+Content-Type: application/json
+
+{
+    "firstname":"MyLittleTest",
+    "lastname":"TestMe",
     "password":"t3s+Y0urprojects"
 }
 
 ### Update Error Test
 ### Update an account with no password
-PUT http://localhost:3030/accounts/6746cdeb5290ced336c65b7b
+PUT http://localhost:3030/accounts/6747b763bda02dac1c185ec0
 Content-Type: application/json
 
 {
     "firstname":"MyLittleTest",
-    "lastname":"TestMe"
+    "lastname":"TestMe",
+    "email":"testTony@fakeemail.com"
 }
 
 ### Update Error Test
-### Update an account to have a matching password as another account
-PUT http://localhost:3030/accounts/6746cdeb5290ced336c65b7b
+### Update an account to have a matching email as another account - Note this should not go through
+PUT http://localhost:3030/accounts/6747b763bda02dac1c185ec0
 Content-Type: application/json
 
 {
     "firstname":"TestTony",
     "lastname":"Test",
+    "email":"bruceLee@fakeemail.com",
     "password":"w@Lk+Th3wayofTh3Dr@g0N"
 }
 
 ### Revert Account
-PUT http://localhost:3030/accounts/6746cdeb5290ced336c65b7b
+PUT http://localhost:3030/accounts/6747b763bda02dac1c185ec0
 Content-Type: application/json
 
 {
     "firstname":"TestTony",
     "lastname":"Test",
+    "email":"testTony@fakeemail.com",
     "password":"t3s+Y0urpr@jects"
 }
 
@@ -212,11 +278,12 @@ Content-Type: application/json
 {
     "firstname":"DeleteDave",
     "lastname":"DeleteMe",
+    "email":"deletethis@fakeemail.com",
     "password":"d3L3+3me"
 }
 
 ### Delete the new account - make sure to update the id in the url
-DELETE http://localhost:3030/accounts/6746da6b07a2f5c5469efe05
+DELETE http://localhost:3030/accounts/6747b849bda02dac1c185ec8
 
 
 
